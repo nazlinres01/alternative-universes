@@ -16,11 +16,11 @@ interface ScenarioFormProps {
 }
 
 const categories = [
-  { id: "historical", label: "Historical", icon: "🏛️", gradient: "category-historical" },
-  { id: "technological", label: "Tech", icon: "🤖", gradient: "category-technological" },
-  { id: "social", label: "Social", icon: "👥", gradient: "category-social" },
-  { id: "environmental", label: "Environment", icon: "🌿", gradient: "category-environmental" },
-  { id: "economic", label: "Economic", icon: "📈", gradient: "category-economic" },
+  { id: "historical", label: "Tarihsel", icon: "🏛️", gradient: "category-historical" },
+  { id: "technological", label: "Teknolojik", icon: "🤖", gradient: "category-technological" },
+  { id: "social", label: "Sosyal", icon: "👥", gradient: "category-social" },
+  { id: "environmental", label: "Çevresel", icon: "🌿", gradient: "category-environmental" },
+  { id: "economic", label: "Ekonomik", icon: "📈", gradient: "category-economic" },
 ] as const;
 
 export default function ScenarioForm({ onScenarioGenerated, onStartGeneration }: ScenarioFormProps) {
@@ -70,11 +70,11 @@ export default function ScenarioForm({ onScenarioGenerated, onStartGeneration }:
           render={({ field }) => (
             <FormItem className="text-left">
               <FormLabel className="text-gray-300 font-medium">
-                What if...
+                Ya olsaydı...
               </FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="What if humans had evolved from dolphins instead of primates?"
+                  placeholder="Ya insanlar primatlar yerine yunuslardan evrimleşseydi?"
                   className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
                   rows={3}
                   {...field}

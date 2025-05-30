@@ -32,13 +32,13 @@ export default function HeroSection() {
         {!currentScenario && !isLoading && (
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 animate-slide-up">
-              Explore <span className="gradient-text">Alternative Universes</span><br />
-              with AI-Powered Scenarios
+              <span className="gradient-text">Alternatif Evrenler</span> Keşfedin<br />
+              Yapay Zeka Destekli Senaryolar
             </h1>
             
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              Ask "What if?" questions and discover fascinating alternative realities. 
-              From historical changes to futuristic possibilities - every scenario is unique.
+              "Ya olsaydı?" sorularınızı sorun ve büyüleyici alternatif gerçeklikleri keşfedin. 
+              Tarihsel değişikliklerden gelecekteki olasılıklara - her senaryo benzersizdir.
             </p>
             
             <div className="glass-effect rounded-2xl p-8 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.4s' }}>

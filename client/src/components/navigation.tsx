@@ -14,11 +14,11 @@ export default function Navigation() {
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#" className="text-gray-300 hover:text-white transition-colors">Explorer</a>
-          <a href="#" className="text-gray-300 hover:text-white transition-colors">My Scenarios</a>
-          <a href="#" className="text-gray-300 hover:text-white transition-colors">About</a>
+          <a href="/explore" className="text-gray-300 hover:text-white transition-colors">Keşfet</a>
+          <a href="/my-scenarios" className="text-gray-300 hover:text-white transition-colors">Senaryolarım</a>
+          <a href="/about" className="text-gray-300 hover:text-white transition-colors">Hakkında</a>
           <Button className="bg-primary hover:bg-primary/80">
-            Sign In
+            Giriş Yap
           </Button>
         </div>
         
@@ -30,11 +30,11 @@ export default function Navigation() {
           </SheetTrigger>
           <SheetContent>
             <div className="flex flex-col space-y-4 mt-6">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Explorer</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">My Scenarios</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">About</a>
+              <a href="/explore" className="text-gray-300 hover:text-white transition-colors">Keşfet</a>
+              <a href="/my-scenarios" className="text-gray-300 hover:text-white transition-colors">Senaryolarım</a>
+              <a href="/about" className="text-gray-300 hover:text-white transition-colors">Hakkında</a>
               <Button className="bg-primary hover:bg-primary/80 w-fit">
-                Sign In
+                Giriş Yap
               </Button>
             </div>
           </SheetContent>
