@@ -1,4 +1,6 @@
 import { scenarios, type Scenario, type InsertScenario } from "@shared/schema";
+import { db } from "./db";
+import { eq, sql } from "drizzle-orm";
 
 export interface IStorage {
   getScenario(id: number): Promise<Scenario | undefined>;
@@ -8,55 +10,47 @@ export interface IStorage {
   incrementLikes(id: number): Promise<void>;
 }
 
-export class MemStorage implements IStorage {
-  private scenarios: Map<number, Scenario>;
-  private currentId: number;
-
-  constructor() {
-    this.scenarios = new Map();
-    this.currentId = 1;
-  }
-
+export class DatabaseStorage implements IStorage {
   async getScenario(id: number): Promise<Scenario | undefined> {
-    return this.scenarios.get(id);
+    const [scenario] = await db.select().from(scenarios).where(eq(scenarios.id, id));
+    return scenario || undefined;
   }
 
   async getAllScenarios(limit = 10, offset = 0): Promise<Scenario[]> {
-    const allScenarios = Array.from(this.scenarios.values())
-      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-    
-    return allScenarios.slice(offset, offset + limit);
+    const result = await db.select().from(scenarios)
+      .orderBy(sql`${scenarios.createdAt} DESC`)
+      .limit(limit)
+      .offset(offset);
+    return result;
   }
 
   async createScenario(insertScenario: InsertScenario): Promise<Scenario> {
-    const id = this.currentId++;
-    const scenario: Scenario = {
-      ...insertScenario,
-      id,
-      createdAt: new Date(),
-      views: 0,
-      likes: 0,
-    };
-    
-    this.scenarios.set(id, scenario);
+    const [scenario] = await db
+      .insert(scenarios)
+      .values(insertScenario)
+      .returning();
     return scenario;
   }
 
   async incrementViews(id: number): Promise<void> {
-    const scenario = this.scenarios.get(id);
-    if (scenario) {
-      scenario.views += 1;
-      this.scenarios.set(id, scenario);
+    const [current] = await db.select().from(scenarios).where(eq(scenarios.id, id));
+    if (current) {
+      await db
+        .update(scenarios)
+        .set({ views: current.views + 1 })
+        .where(eq(scenarios.id, id));
     }
   }
 
   async incrementLikes(id: number): Promise<void> {
-    const scenario = this.scenarios.get(id);
-    if (scenario) {
-      scenario.likes += 1;
-      this.scenarios.set(id, scenario);
+    const [current] = await db.select().from(scenarios).where(eq(scenarios.id, id));
+    if (current) {
+      await db
+        .update(scenarios)
+        .set({ likes: current.likes + 1 })
+        .where(eq(scenarios.id, id));
     }
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
