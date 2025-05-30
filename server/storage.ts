@@ -1,6 +1,6 @@
 import { scenarios, type Scenario, type InsertScenario } from "@shared/schema";
 import { db } from "./db";
-import { eq, sql } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 export interface IStorage {
   getScenario(id: number): Promise<Scenario | undefined>;
@@ -17,11 +17,16 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getAllScenarios(limit = 10, offset = 0): Promise<Scenario[]> {
-    const result = await db.select().from(scenarios)
-      .orderBy(sql`${scenarios.createdAt} DESC`)
-      .limit(limit)
-      .offset(offset);
-    return result;
+    try {
+      const result = await db.select().from(scenarios)
+        .orderBy(desc(scenarios.createdAt))
+        .limit(limit)
+        .offset(offset);
+      return result;
+    } catch (error) {
+      console.error('Database query error:', error);
+      return [];
+    }
   }
 
   async createScenario(insertScenario: InsertScenario): Promise<Scenario> {
