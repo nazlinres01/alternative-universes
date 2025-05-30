@@ -49,8 +49,8 @@ export default function PreviousScenarios() {
     <section className="px-4 py-12">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Previous Explorations</h2>
-          <p className="text-gray-300">Revisit the alternative universes you've discovered</p>
+          <h2 className="text-3xl font-bold mb-4">Önceki Keşifler</h2>
+          <p className="text-gray-300">Keşfettiğiniz alternatif evrenlerini yeniden ziyaret edin</p>
         </div>
         
         {isLoading ? (

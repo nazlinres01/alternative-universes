@@ -87,7 +87,7 @@ export default function ScenarioForm({ onScenarioGenerated, onStartGeneration }:
         
         <div className="text-left">
           <FormLabel className="text-gray-300 font-medium mb-3 block">
-            Category
+            Kategori
           </FormLabel>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {categories.map((category) => (
@@ -116,7 +116,7 @@ export default function ScenarioForm({ onScenarioGenerated, onStartGeneration }:
           disabled={generateMutation.isPending}
         >
           <Sparkles className="mr-2" size={20} />
-          Generate Alternative Universe
+          Alternatif Evren Oluştur
         </Button>
       </form>
     </Form>
