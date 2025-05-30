@@ -15,6 +15,11 @@ export interface ScenarioResponse {
 }
 
 export async function generateScenario(question: string, category: string): Promise<ScenarioResponse> {
+  // Check if OpenAI API key is available
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OpenAI API key is required to generate scenarios. Please provide your OpenAI API key to enable AI-powered scenario generation.");
+  }
+
   try {
     const prompt = `You are an expert alternative universe simulator. Generate a detailed, creative, and plausible "What If" scenario based on the user's question.
 
