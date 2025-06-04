@@ -2,6 +2,9 @@
 
 A modern web application that generates creative "What If" scenarios using AI-powered technology. Explore fascinating alternative realities across different categories like history, technology, society, environment, and economics.
 
+![Resim3](https://github.com/user-attachments/assets/53281632-37f2-4274-ac46-e4caf4478e86)
+
+
 ## Features
 
 - **AI-Powered Scenario Generation**: Create detailed alternative universe scenarios based on your "What if" questions
